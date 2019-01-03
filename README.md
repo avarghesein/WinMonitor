@@ -5,7 +5,7 @@ Demo Project On Remote Workstation Administration through Visual C++ - Win32 Soc
 
 [Architecture In a NutShell](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Architecture%20In%20a%20NutShell.txt)
 
-[Detailed Design Document](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Detailed%20Design.docx)
+[Detailed Design Document](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Detailed%20Architecture.docx)
 
 The project demos the aspects of controlling remote workstations from a central administration server using Client-Server model. It comprises of two components:
 
