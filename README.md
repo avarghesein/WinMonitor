@@ -16,7 +16,8 @@ using which you could register remote workstations to be controlled and then mon
 Each workstation has WinMonitor-Server component installed on them (More below).
 
 The main program depends on a Visual  Basic Class Library Named [WinMonitorBLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorBLIB.1.0),
-which in turn depends on a Win32 C++ Library named [WinMonitorCLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorCLIB.1.0)
+which in turn depends on a Win32 C++ Library named [WinMonitorCLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorCLIB.1.0).
+
 WinMonitorCLIB is a shared C++ Library shared between WinMonitor Client and WinMonitor Server (below)
 
 # WinMonitor-Server:
