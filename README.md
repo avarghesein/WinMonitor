@@ -9,19 +9,24 @@ Demo Project On Remote Workstation Administration through Visual C++ - Win32 Soc
 
 The project demos the aspects of controlling remote workstations from a central administration server using Client-Server model. It comprises of two components:
 
-# Client :
+# WinMonitor-Client :
 Will be installed on a Central Administration Server. 
 The main program is a Visual Basic GUI application, named [WinMonitor](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitor.1.0),
 using which you could register remote workstations to be controlled and then monitor them.
-Each workstation has WinMonitorServer component installed on them (More below).
+Each workstation has WinMonitor-Server component installed on them (More below).
 
-The main program depends on Visual  Basic Class Library Named [WinMonitorBLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorBLIB.1.0),
+The main program depends on a Visual  Basic Class Library Named [WinMonitorBLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorBLIB.1.0),
 which in turn depends on a Win32 C++ Library named [WinMonitorCLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitorCLIB.1.0)
 WinMonitorCLIB is a shared C++ Library shared between WinMonitor Client and WinMonitor Server (below)
 
-# Server:
+# WinMonitor-Server:
 Will be installed on every single Remote Workstations to be controlled.
 They are configured to run on boot up and listen for incoming connections (From WInMonitor Client application) to be serviced.
+
+The main program is a Win32 EXE Application named [WinMonitorServer](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorServer/WinMonitorServer)
+The main program depends on a Win32 C++ Library named [WinMonitorCLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorCLIB.1.0) and a Win32 C++ Plugin Library named [WinMonitorServerPlugin](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorServer/WinMonitorServerPlugin) for added features
+--A more fine grained plugin model of WinMonitor-Server (though not fully tested) is also available under Version to [here](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/PluginBased_V2.0).
+
 
 The server support Administration Tasks (based on the commands initiated from the WinMonitor Client)
 enabled at the workstation in which it is running includes;
