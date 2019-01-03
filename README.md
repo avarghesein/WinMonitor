@@ -42,41 +42,56 @@ This is called Reverse Connections.
 Features In Pictures:
 
 * Registering a New Remote Server In Client
+
 ![alt Pic1](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RegisterWorkStation.jpg)
+
 ![alt Pic2](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RegisterWorkStation2.jpg)
 
 * Client Connecting To Remote Server
+
 ![alt Pic3](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-ConnectToServer.jpg)
 
 * Remote Server Reverse Connecting To Client
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-LoginToReverseConnectedServers.jpg)
+
+![alt Pic4](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-LoginToReverseConnectedServers.jpg)
 
 * Client showsing Remote Server's Dashboard
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerDashboard.jpg)
+
+![alt Pic5](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerDashboard.jpg)
 
 * Client Capturing Remote Server Desktop Offline
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerOfflineDesktopCapture.jpg)
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeScreenCapture.jpg)
+
+![alt Pic6](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerOfflineDesktopCapture.jpg)
+
+![alt Pic7](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeScreenCapture.jpg)
 
 * Client shows Remote Server's Drive Details
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeDriveDetails.jpg)
+
+![alt Pic8](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeDriveDetails.jpg)
 
 * Client exploring and managing Remote Server's File System
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerFileExplorer.jpg)
+
+![alt Pic9](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerFileExplorer.jpg)
 
 * Client LogOff/Shutdown Remote Server 
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeShutdownLogOff.jpg)
+
+![alt Pic10](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeShutdownLogOff.jpg)
 
 * Client showing and managing Remote Server Processes
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeProcessManagement.jpg)
+
+![alt Pic11](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeProcessManagement.jpg)
 
 * Client messages, Live Chats with Remote Server Use
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeMessaging.jpg)
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeLiveChat.jpg)
+
+![alt Pic12](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeMessaging.jpg)
+
+![alt Pic13](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeLiveChat.jpg)
 
 * Client Captures, Remote Server, User Keyboard Activities
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCaptureUserTypedKeys.jpg)
+
+![alt Pic14](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCaptureUserTypedKeys.jpg)
 
 * Client opening/closing Remote Server CD Rom Drive
-(https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCDDriveManagement.jpg)
+
+![alt Pic15](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCDDriveManagement.jpg)
 
