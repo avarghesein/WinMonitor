@@ -44,7 +44,7 @@ on the Remote workstation in which it is running, includes-
 * Log Off, Restart, Shutdown the Remote workstation
 
 By default The client will make connections to the Remote Servers.
-On the contrarary The Remote server can also configured to connect to a WinMonitor-Client, so the The Client hasn't need to lookup for such Remote Servers.
+On the contrarary The Remote server can also configured to reverse connect back to a WinMonitor-Client, so the The Client hasn't need to lookup for such Remote Servers.
 This is called Reverse Connections.
 
 Features In Pictures:
