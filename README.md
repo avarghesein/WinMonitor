@@ -30,8 +30,8 @@ The main program depends on a Win32 C++ Library named [WinMonitorCLIB](https://g
 **A more fine grained plugin model of WinMonitor-Server (though not fully tested) is also available under Version to [here](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/PluginBased_V2.0).
 
 
-The server support Administration Tasks (based on the commands initiated from the WinMonitor Client)
-enabled at the workstation in which it is running includes;
+The server support Administration Tasks (based on the commands initiated from the WinMonitor Client) to be done
+on the workstation in which it is running, includes-
 
 * Enable Key Loggers to capture User Typed Keys for monitoring
 * Live or Offline Screen Capturing on a periodic basis 
