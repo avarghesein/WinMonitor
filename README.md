@@ -31,20 +31,20 @@ The main program depends on a Win32 C++ Library named [WinMonitorCLIB](https://g
 
 
 The server support Administration Tasks (based on the commands initiated from the WinMonitor Client) to be done
-on the workstation in which it is running, includes-
+on the Remote workstation in which it is running, includes-
 
-* Enable Key Loggers to capture User Typed Keys for monitoring
-* Live or Offline Screen Capturing on a periodic basis 
-* Browsing File System and Drives
-* Copying Files/Folders between WinMonitor Client and Workstation
-* Live Chat messaging between WinMonitor Client and Workstation user
-* Running WinMonitor client issues commands on the Workstation
+* Enable Key Loggers to capture User Typed Keys for monitoring from the Remote Workstation
+* Live or Offline Screen Capturing from Remote Workstation, on a periodic basis 
+* Browsing File System and Drives on the Remote Workstation
+* Copying Files/Folders between WinMonitor Client and Remote Workstation
+* Live Chat messaging between WinMonitor Client and REmote Workstation user
+* Running WinMonitor client issueed commands on the Remote Workstation
 * Open/Close Workstations CD Rom Drive remotely
-* Allows view or manage workstation process remotely (change priority, Kill Process)
-* Log Off, Restart, Shutdown the workstation
+* View or manage Remote workstation running processes (change priority, Kill Process)
+* Log Off, Restart, Shutdown the Remote workstation
 
-By default The client will make connections to the Server.
-On the contrarary The server can also configured to connect to a Remote Client, so the The Client hasn't need to lookup for such Servers.
+By default The client will make connections to the Remote Servers.
+On the contrarary The Remote server can also configured to connect to a WinMonitor-Client, so the The Client hasn't need to lookup for such Remote Servers.
 This is called Reverse Connections.
 
 Features In Pictures:
