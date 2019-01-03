@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMonitorServerPlugin", "WinMonitorServerPlugin.vcproj", "{255F0732-20AC-4766-897B-210BB0EE317D}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{255F0732-20AC-4766-897B-210BB0EE317D}.Debug.ActiveCfg = Debug|Win32
+		{255F0732-20AC-4766-897B-210BB0EE317D}.Debug.Build.0 = Debug|Win32
+		{255F0732-20AC-4766-897B-210BB0EE317D}.Release.ActiveCfg = Release|Win32
+		{255F0732-20AC-4766-897B-210BB0EE317D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

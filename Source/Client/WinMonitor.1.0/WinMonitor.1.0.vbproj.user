@@ -1,0 +1,48 @@
+<VisualStudioProject>
+    <VisualBasic>
+        <Build>
+            <Settings ReferencePath = "E:\DEV\VisualStudio.NET\My_.NET_Projects\Tony-Project\WinMonitor-1.0\WinMonitorBLIB.1.0\bin\;E:\Abraham-BackUp\My_.NET_Projects\Abraham-Projects\MCA-FINAL-PROJECT\WinMonitor-1.0\WinMonitorBLIB.1.0\bin\;E:\DEV\VisualStudio.NET\My_.NET_Projects\WinMonitor.1.0\References\;E:\DEV\VisualStudio.NET\My_.NET_Projects\MCA-FINAL-PROJECT\WinMonitor.1.0\References\;E:\DEV\VisualStudio.NET\My_.NET_Projects\MCA-FINAL-PROJECT-Modified\WinMonitor.1.0\References\;E:\DEV\VisualStudio.NET\My_.NET_Projects\MCA-FINAL-PROJECT-Modified-crashed\WinMonitor.1.0\References\;E:\DEV\VisualStudio.NET\My_.NET_Projects\MCA-FINAL-PROJECT-MODIFIED-LATEST\WinMonitor.1.0\References\;E:\DEV\VisualStudio.NET\My_.NET_Projects\MCA-FINAL-PROJECT-NEWHEAP\WinMonitor.1.0\References\;E:\Abraham-BackUp\My_.NET_Projects\Abraham-Projects\MCA-FINAL-PROJECT\WinMonitor-1.0\WinMonitor.1.0\References\" >
+                <Config
+                    Name = "Debug"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "true"
+                />
+                <Config
+                    Name = "Release"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "true"
+                />
+            </Settings>
+        </Build>
+        <OtherProjectSettings
+            CopyProjectDestinationFolder = ""
+            CopyProjectUncPath = ""
+            CopyProjectOption = "0"
+            ProjectView = "ProjectFiles"
+            ProjectTrust = "0"
+        />
+    </VisualBasic>
+</VisualStudioProject>
+

@@ -1,0 +1,381 @@
+Server:
+               1. Needs WinMonitorServer,WinMonitorServerPlugins and Some files in WinMonitorCLIB.1.0
+
+  Client:         
+               1. Needs WinMonitor.1.0, WinMonitorBLIB.1.0 and WinMonitorCLIB.1.0.
+
+
+   
+               WinMonitorCLIB.1.0 implements basic functionality such as Network Sockets, Windows Native API
+               etc. The Client access it through a wrapper class in WinMonitorBLIB.1.0. The wrapper class calls
+               the C-Functions using 'Private Declare Function' using to import API's.
+
+
+               For eg,  We make a class(C++ class) for Screen Capture in WinMonitorCLIB.1.0, which can be used by both The Server & Client. The Server can use it directly by including the                  file that implements Screen Capture(C++ header normally) in WinMonitorCLIB.
+
+                       To use this functionality in Client we make C-Functions in WinMonitorCLIB.1.0, for each
+              function that the 'Screen Capture' class exports as public methods. So this C-Functions must have
+              the first argument as a the pointer to the class (Screen Capture class here) and use this pointer
+              to call the member function. Similarly both Constructor & Destructor as implemented as               C-Functions which will return the pointer to Objects (Screen Capture class objects here) and 
+              destructor-C-Simulation will delete the respective pointer. We Make these functions as Exported               functions from the DLL.
+
+                       The next stage is develop a VB.NET class in WinMonitorBLIB.1.0 that will use this               functions, This Wrapper class contains an UNIT64 variable to store the pointer to object (Screen               Capture class objects here)         so that it can call the exported C-Functions with the first argument
+              as this stored pointer. The .NET class provides wrappers for each C-Function imported through 'public declare' so that that the wrapper functions does not contain the first argument as the object pointer so that other .NET modules can directly create and use these .NET classes; See (WinMonitorVC++Library.1.0.H whic provide C-Wrappers for C++ classes) in CLIB & (CNwUtility.vb that provide .NET wrapper classes for these C-Functions)BLIB for details.
+
+
+
+
+    For Ex:
+
+C++ Class( in GenericNetwork.h in CLIB)
+---------------------------------------
+
+class CTcpNwMonitorConnection:public CNetworkBase 
+{
+protected:
+	 SOCKET m_socketDataSocket;
+	 struct sockaddr_in m_sokadrinetRemoteAddr;
+	 enum NW_ERROR m_enumErrCode;
+	 bool m_boolErrorFlag;
+	 HANDLE m_muxConnection;
+
+protected:
+	 void ReFresh(void);
+	 bool SetError(enum NW_ERROR ErrCode); 
+	 void ClearError(void)  { m_enumErrCode=NO_ERR;m_boolErrorFlag=0;  }
+	 bool Connect(void);
+
+public:
+	 CTcpNwMonitorConnection();
+	 CTcpNwMonitorConnection(SOCKET *m_socketDataSocket,struct sockaddr_in *m_sokadrinetRemoteAddr);
+	 CTcpNwMonitorConnection(CTcpNwMonitorConnection &ClientToBeCloned);	
+	 ~CTcpNwMonitorConnection();
+	 CTcpNwMonitorConnection &operator=(CTcpNwMonitorConnection &ClientToBeCloned);
+	 void SetSocket(SOCKET SocketCopy) { m_socketDataSocket=SocketCopy; ClearError(); }
+	 void SetAddress(struct sockaddr_in SockAddress) { m_sokadrinetRemoteAddr=SockAddress; ClearError(); }
+	 bool FlushAll(void);	
+	 enum NW_ERROR LastError(void) {  return m_enumErrCode; }
+	 bool ConnectTo(TCHAR *ServerIP,UINT ServerPort);
+	 bool GetIPandPort(bool OfRemoteHost,TCHAR *IP,UINT32 &Port);
+	 bool IsEmptyReceiveBuffer(bool &blnIsSockError);
+	 bool SendByteStream(char *MessageBuffer,UINT32 NumberOfBytesToSend,UINT32 &NumberOfBytesSended);
+	 bool ReceiveByteStream(char *MessageBuffer,UINT32 NumberOfBytesToReceive,UINT32 &NumberOfBytesReceived);
+	 bool Disconnect(void);
+	 bool Invalidate(void);
+};
+
+
+C-Wrappers Declarations in (WinMonitorVC++Library.1.0.H : See implementation in WinMonitorVC++Library.1.0.CPP)
+--------------------------------------------------------------------------------------------------------------
+
+
+/*-----------Network Connecting  Functions(Only Public Functions)--------*/
+
+extern "C" UINT64  RegisterAsNwConnectionUser(void);
+extern "C" int RemoveNwConnectionUser(UINT64  Address);
+
+extern "C" int  ConnectionLastError(UINT64  Address);
+extern "C" int ConnectTo(UINT64  Address,TCHAR *ServerIP,UINT ServerPort);
+extern "C" int GetIPandPort(UINT64  Address,int OfRemoteHost,TCHAR *IP,UINT32 &Port);
+extern "C" int SendByteStream(UINT64  Address,char *MessageBuffer,UINT32 NumberOfBytesToSend,UINT32 &NumberOfBytesSended);
+extern "C" int ReceiveByteStream(UINT64  Address,char *MessageBuffer,UINT32 NumberOfBytesToReceive,UINT32 &NumberOfBytesReceived);
+extern "C" int Disconnect(UINT64  Address);
+
+
+.NET wrapper class in CNwUtility.vb
+-----------------------------------
+
+Public Class CTcpNetworkMonitorConnection : Implements IDisposable
+
+#Region "Private And Protected Fields"
+
+    Private m_UInt64Address As UInt64
+    Private m_bytMaxNumberOfBytesToReceive As Long = 5000
+
+    Protected Friend Property Address() As UInt64
+        Get
+            Return m_UInt64Address
+        End Get
+
+        Set(ByVal AddressCopy As UInt64)
+            m_UInt64Address = AddressCopy
+        End Set
+    End Property
+
+#End Region
+
+#Region "Private API's"
+
+    Private Declare Function RegisterAsNwConnectionUser Lib "WinMonitorCLIB.1.0.dll" Alias "RegisterAsNwConnectionUser" () As UInt64
+    Private Declare Function RemoveNwConnectionUser Lib "WinMonitorCLIB.1.0.dll" Alias "RemoveNwConnectionUser" (ByVal Address As UInt64) As Boolean
+    Private Declare Function LastError Lib "WinMonitorCLIB.1.0.dll" Alias "ConnectionLastError" (ByVal Address As UInt64) As Integer
+    Private Declare Function ConnectTo Lib "WinMonitorCLIB.1.0.dll" Alias "ConnectTo" (ByVal Address As UInt64, ByVal ServerIP As String, ByVal ServerPort As UInt32) As Boolean
+    Private Declare Function GetIPandPort Lib "WinMonitorCLIB.1.0.dll" Alias "GetIPandPort" (ByVal Address As UInt64, ByVal OfRemoteHost As Boolean, ByVal IP As String, ByRef Port As UInt32) As Boolean
+    Private Declare Function SendByteStream Lib "WinMonitorCLIB.1.0.dll" Alias "SendByteStream" (ByVal Address As UInt64, ByVal MessageBuffer() As Byte, ByVal NumberOfBytesToSend As UInt32, ByRef NumberOfBytesSended As UInt32) As Boolean
+    Private Declare Function ReceiveByteStream Lib "WinMonitorCLIB.1.0.dll" Alias "ReceiveByteStream" (ByVal Address As UInt64, ByVal MessageBuffer() As Byte, ByVal NumberOfBytesToReceive As UInt32, ByRef NumberOfBytesReceived As UInt32) As Boolean
+    Private Declare Function Disconnect Lib "WinMonitorCLIB.1.0.dll" Alias "Disconnect" (ByVal Address As UInt64) As Boolean
+
+#End Region
+
+#Region "Constructor/Destructor"
+
+    Protected Friend Sub New(ByVal AddressCopy As UInt64)
+        m_UInt64Address = AddressCopy
+    End Sub
+
+    Public Sub New()
+        m_UInt64Address = RegisterAsNwConnectionUser()
+    End Sub
+
+    Public Sub dispose() Implements IDisposable.Dispose
+        RemoveNwConnectionUser(m_UInt64Address)
+    End Sub
+
+#End Region
+
+#Region "Private Methods"
+
+    Private Function prvtReceiveString(ByVal NumberOfCharsToReceive As Long) As String
+        Dim NwUtility As New CStringUtility()
+        Dim lngBytReceived As Long
+        Dim bytReceive(NumberOfCharsToReceive) As Byte
+        If (ReceiveByteStream(bytReceive, NumberOfCharsToReceive, lngBytReceived) = False) Then
+            Return IDS_NULL_STRING
+        Else
+            Return NwUtility.ByteArrayToString(bytReceive, lngBytReceived)
+        End If
+    End Function
+
+#End Region
+
+#Region "Public Properties"
+
+    Public WriteOnly Property MaximumStringLength() As Long
+        Set(ByVal Value As Long)
+            m_bytMaxNumberOfBytesToReceive = Value
+        End Set
+    End Property
+
+#End Region
+
+#Region "Public Methods"
+
+
+    Public Function LastError() As Integer
+        Return LastError(m_UInt64Address)
+    End Function
+
+    Public Function ConnectTo(ByVal ServerIP As String, ByVal ServerPort As Integer) As Boolean
+        Dim uint32ServerPort As UInt32 = System.Convert.ToUInt32(ServerPort)
+        Return ConnectTo(m_UInt64Address, ServerIP, uint32ServerPort)
+    End Function
+
+    Public Function GetIPandPort(ByVal OfRemoteHost As Boolean, ByRef IP As String, ByRef Port As Integer) As Boolean
+        Dim objNwUtility As New CStringUtility()
+        Dim uint32Port As UInt32
+        Dim strIp As String = objNwUtility.FreshString(20)
+        Dim boolOk As Boolean = GetIPandPort(m_UInt64Address, OfRemoteHost, strIp, uint32Port)
+        IP = objNwUtility.CStyleStringToVbString(strIp)
+        Port = System.Convert.ToInt32(uint32Port)
+        Return boolOk
+    End Function
+
+    Public Function SendByteStream(ByRef MessageBuffer() As Byte, ByVal NumberOfBytesToSend As Long, ByRef NumberOfBytesSended As Long) As Boolean
+        Dim uint32LenToSend As UInt32 = System.Convert.ToUInt32(NumberOfBytesToSend)
+        Dim uint32LenSended As UInt32
+        Dim boolOk As Boolean = SendByteStream(m_UInt64Address, MessageBuffer, uint32LenToSend, uint32LenSended)
+        NumberOfBytesSended = System.Convert.ToInt64(uint32LenSended)
+        Return boolOk
+    End Function
+
+    Public Function SendString(ByVal Message As String) As Boolean
+        Dim NwUtility As New CStringUtility()
+        Dim stgForNothing As Long
+        Return SendByteStream(NwUtility.StringToByteArray(Message), Message.Length(), stgForNothing)
+    End Function
+
+    Public Function ReceiveString() As String
+        Return prvtReceiveString(m_bytMaxNumberOfBytesToReceive)
+    End Function
+
+    Public Function ReceiveString(ByVal NumberOfCharsToReceive As Long) As String
+        Return prvtReceiveString(NumberOfCharsToReceive)
+    End Function
+
+    Public Function ReceiveByteStream(ByRef MessageBuffer() As Byte, ByVal NumberOfBytesToReceive As Long, ByRef NumberOfBytesReceived As Long) As Boolean
+        Dim uint32LenToReceive As UInt32 = System.Convert.ToUInt32(NumberOfBytesToReceive)
+        Dim uint32LenReceived As UInt32
+        Dim boolOk As Boolean = ReceiveByteStream(m_UInt64Address, MessageBuffer, uint32LenToReceive, uint32LenReceived)
+        NumberOfBytesReceived = System.Convert.ToInt64(uint32LenReceived)
+        Return boolOk
+    End Function
+
+    Public Function Disconnect() As Boolean
+        Return Disconnect(m_UInt64Address)
+    End Function
+
+#End Region
+
+End Class
+
+
+
+
+Implementing Client in Another languages
+----------------------------------------
+
+We must first implement all the .NET wrapper class (one discussed just above) in the targeted language.
+And convert the user interfaces/Code in thet GUI implemented in 'WinMonitor.1.0' in that language.
+(That means WinMonitorBLIB/WinMonitor.1.0(Client) must be rewritted).
+
+Adding Plugins
+--------------
+
+   1. Add the plugin implementation in WinMonitorServerPlugin.1.0 as a C++ class
+   2. Use C Wrappers Just as discussed above and Export them. (in WinMonitorServerPlugin.1.0) 
+   3. Create Wrapper C++ class for these functions, in (WinMonitorServer.1.0(Server))
+   4. Call the exported C-Functions (in WinMonitorServerPlugin.1.0) in this C++ wrapper class using
+      Function Ponters.
+
+
+    
+Ex:
+
+  A Sample Plugin Class in WinMonitorServerPlugin.1.0 in file (FunPlugin.H)
+ --------------------------------------------------------------------------
+
+class CWinMonitorFunPlugin 
+{
+	protected:
+		static HANDLE         m_KeyBrdFunPluginThreadHandle;
+		static volatile bool  m_blnContinueFunPlugin;
+
+	protected:
+		bool CDRomOpenOrClose(bool IsOpen=true);
+
+	public:
+		bool CanContinue(void);
+		bool StartKeyBoardPlugin(void);
+		bool StopKeyBoardPlugin(void);
+		bool OpenCDRom(void);
+		bool CloseCDRom(void);
+};
+
+Wrapper C++ Class in Server to use the Plugin Class
+----------------------------------------------------
+        Note:(File IPluginGeneric.H for loading the plugin DLL) 
+        //-------------Loaded Plugin Modules---------//
+
+	static HMODULE GblStat_HModulePlugins_1_0=LoadLibrary("WinMonitorServerPlugin.1.0.dll");
+
+	//-------------Function Prototypes------------//
+	
+	typedef UINT64 (*MethodRetUint64ArgVoid)                (void);
+	typedef UINT64 (*MethodRetUint64ArgByte)                (BYTE);
+	typedef bool   (*MethodRetBoolArgUint64)                (UINT64);
+	typedef bool   (*MethodRetBoolArgUint64BoolDef)         (UINT64,bool=true);
+	typedef bool   (*MethodRetBoolArgUint64ByteBoolDef)     (UINT64,BYTE,bool=true); 
+	typedef UINT32 (*MethodRetUint32ArgUint64ByteptrRef)    (UINT64,BYTE*&);
+	typedef UINT32 (*MethodRetUint32ArgUint64Byteptr)       (UINT64,BYTE*);
+	typedef bool   (*MethodRetBoolArgUint64Ctcpconnection)  (UINT64,CTcpNwMonitorConnection); 
+	typedef bool   (*MethodRetBoolArgCtcpconnection)        (CTcpNwMonitorConnection); 
+	typedef bool   (*MethodRetBoolArgUint64Bool2HwndDef)    (UINT64,bool,bool,HWND=0);
+	typedef bool   (*MethodRetBoolArgUint64Bool2Tcharptr)   (UINT64,bool,bool,TCHAR*);
+	typedef bool   (*MethodRetBoolArgInt) (int);
+	typedef bool   (*MethodRetBoolArgVoid) (void);
+
+Note: //--------File IFunPlugin.H to implement the Wrapper class
+
+class CFunPlugin
+{
+	protected:
+		UINT64 m_uint64Address;
+
+	protected:
+		void *GetFunctionAddress(LPCSTR FunctionName);
+		bool StartOrStopKeyBoardFunPlugin(bool IsStart=true);
+		bool CDRomOpenOrClose(bool IsOpen=true);
+	
+	public:
+		CFunPlugin(void);
+		bool StartKeyBoardFunPlugin(void); 
+		bool StopKeyBoardFunPlugin(void);  
+		bool OpenCDRom(void);
+		bool CloseCDRom(void);
+	   ~CFunPlugin(void);
+};
+
+
+bool CFunPlugin::CDRomOpenOrClose(bool IsOpen)
+{
+	MethodRetBoolArgUint64BoolDef OpenOrCloseCDRomProc=(MethodRetBoolArgUint64BoolDef)GetFunctionAddress("OpenOrCloseCDRom");
+	if(OpenOrCloseCDRomProc) 
+		try {  return (bool)OpenOrCloseCDRomProc(m_uint64Address,IsOpen); } catch(...) {}
+
+	return false;
+}
+
+bool CFunPlugin::OpenCDRom(void)
+{
+	return CDRomOpenOrClose(true);
+}
+
+bool CFunPlugin::CloseCDRom(void)
+{
+	return CDRomOpenOrClose(false);
+}
+
+void *CFunPlugin::GetFunctionAddress(LPCSTR FunctionName)
+{
+	if(!GblStat_HModulePlugins_1_0) return 0;
+
+	try
+	{	
+		return (void*)GetProcAddress(GblStat_HModulePlugins_1_0,FunctionName); 
+	}
+	catch(...) { return 0; }
+}
+
+CFunPlugin::CFunPlugin(void)
+{
+	MethodRetUint64ArgVoid RegisterProc=(MethodRetUint64ArgVoid) GetFunctionAddress("RegisterAsFunPluginClient");
+	if(m_uint64Address=0,RegisterProc) 
+		try { m_uint64Address=(UINT64)RegisterProc(); } catch(...) {}
+}
+
+CFunPlugin::~CFunPlugin(void)
+{
+	MethodRetBoolArgUint64 UnRegisterProc=(MethodRetBoolArgUint64)GetFunctionAddress("UnRegisterAsFunPluginClient");
+	if(UnRegisterProc) 
+		try {  UnRegisterProc(m_uint64Address); } catch(...) {}
+}
+
+bool CFunPlugin::StartOrStopKeyBoardFunPlugin(bool IsStart)
+{
+	MethodRetBoolArgUint64BoolDef StartOrStopKBrdPluginProc=(MethodRetBoolArgUint64BoolDef)GetFunctionAddress("StartOrStopKeyBoardFunPlugin");
+	if(StartOrStopKBrdPluginProc) 
+		try {  return (bool)StartOrStopKBrdPluginProc(m_uint64Address,IsStart); } catch(...) {}
+
+	return false;
+}
+
+bool CFunPlugin::StartKeyBoardFunPlugin(void)
+{
+	return StartOrStopKeyBoardFunPlugin(true);
+}
+
+bool CFunPlugin::StopKeyBoardFunPlugin(void)
+{
+	return StartOrStopKeyBoardFunPlugin(false);
+}
+
+
+Note: If want the interface also available in Client use the method discussed above to Get functions from
+      CLIB.DLL to BLIB.DLL and then to Client.
+
+      Here use similar proceedure with       
+ 
+         IFunPlugin.H (Include this file and its C-Wrappers in CLIB) and then to BLIB.DLL, then to Client
+
+
+NOTE:All plugin Interfaces are described in "WinMonitorServer\PluginInterface"

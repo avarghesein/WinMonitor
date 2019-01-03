@@ -1,0 +1,9 @@
+# Microsoft Developer Studio Generated Dependency File, included by WinMonitorServer.mak
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+.\WinMonitorServer.cpp : \
+	".\StdAfx.h"\
+	

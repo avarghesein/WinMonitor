@@ -1,0 +1,22 @@
+# Microsoft Developer Studio Generated Dependency File, included by WinMonitorServerPlugin.mak
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\WinMonitorServerPlugin.cpp : \
+	".\ChatServer.h"\
+	".\FunPlugin.h"\
+	".\GenericExtendedQueue.h"\
+	".\GenericNetwork.h"\
+	".\genericutility.h"\
+	".\Globals.h"\
+	".\LzssCompression.h"\
+	".\networkdatatypes.h"\
+	".\NetworkHeaderFormats.h"\
+	".\OnLineKeyLogger.h"\
+	".\ScreenMonitor.h"\
+	".\TcpNetworkMonitorDataSocket.h"\
+	".\WinMonitorServerPlugin.h"\
+	

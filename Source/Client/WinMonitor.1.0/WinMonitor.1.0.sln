@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinMonitor.1.0", "WinMonitor.1.0.vbproj", "{224307AE-F8A5-4A58-A6BC-CADCB6B416F2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinMonitorBLIB.1.0", "..\WinMonitorBLIB.1.0\WinMonitorBLIB.1.0.vbproj", "{8BEDE229-1CE7-4DC1-A991-1AA393E1BCDD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMonitorCLIB.1.0", "..\WinMonitorCLIB.1.0\WinMonitorVC++Library.1.0.vcproj", "{18FB279B-ECE1-425F-B2FA-57313BCBEAF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{224307AE-F8A5-4A58-A6BC-CADCB6B416F2}.Debug.ActiveCfg = Debug|.NET
+		{224307AE-F8A5-4A58-A6BC-CADCB6B416F2}.Debug.Build.0 = Debug|.NET
+		{224307AE-F8A5-4A58-A6BC-CADCB6B416F2}.Release.ActiveCfg = Release|.NET
+		{224307AE-F8A5-4A58-A6BC-CADCB6B416F2}.Release.Build.0 = Release|.NET
+		{8BEDE229-1CE7-4DC1-A991-1AA393E1BCDD}.Debug.ActiveCfg = Debug|.NET
+		{8BEDE229-1CE7-4DC1-A991-1AA393E1BCDD}.Debug.Build.0 = Debug|.NET
+		{8BEDE229-1CE7-4DC1-A991-1AA393E1BCDD}.Release.ActiveCfg = Release|.NET
+		{8BEDE229-1CE7-4DC1-A991-1AA393E1BCDD}.Release.Build.0 = Release|.NET
+		{18FB279B-ECE1-425F-B2FA-57313BCBEAF9}.Debug.ActiveCfg = Debug|Win32
+		{18FB279B-ECE1-425F-B2FA-57313BCBEAF9}.Debug.Build.0 = Debug|Win32
+		{18FB279B-ECE1-425F-B2FA-57313BCBEAF9}.Release.ActiveCfg = Release|Win32
+		{18FB279B-ECE1-425F-B2FA-57313BCBEAF9}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

