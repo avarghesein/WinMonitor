@@ -9,7 +9,7 @@ Demo Project On Remote Workstation Administration through Visual C++ - Win32 Soc
 
 The project demos the aspects of controlling remote workstations from a central administration server using Client-Server model. It comprises of two components:
 
-# WinMonitor-Client :
+# WinMonitor-Client or System-Administrator:
 Will be installed on a Central Administration Server. 
 The main program is a Visual Basic GUI application, named [WinMonitor](https://github.com/avarghesein/WinMonitor/tree/master/Source/Client/WinMonitor.1.0),
 using which you could register remote workstations to be controlled and then monitor them.
@@ -20,7 +20,7 @@ which in turn depends on a Win32 C++ Library named [WinMonitorCLIB](https://gith
 
 WinMonitorCLIB is a shared C++ Library shared between WinMonitor Client and WinMonitor Server (below)
 
-# WinMonitor-Server:
+# WinMonitor-Server or Remote-User-Workstation:
 Will be installed on every single Remote Workstations to be controlled.
 They are configured to run on boot up and listen for incoming connections (From WInMonitor Client application) to be serviced.
 
@@ -49,21 +49,21 @@ This is called Reverse Connections.
 
 Features In Pictures:
 
-* Registering a New Remote Server In Client
+* Registering a New Remote Workstation In Client
 
 ![alt Pic1](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RegisterWorkStation.jpg)
 
 ![alt Pic2](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RegisterWorkStation2.jpg)
 
-* Client Connecting To Remote Server
+* Client Connecting To Remote Workstation Or Server
 
 ![alt Pic3](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-ConnectToServer.jpg)
 
-* Remote Server Reverse Connecting To Client
+* Remote Workstation Reverse Connecting To Client
 
 ![alt Pic4](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-LoginToReverseConnectedServers.jpg)
 
-* Client showsing Remote Server's Dashboard
+* Client showsing Remote Workstation's Dashboard
 
 ![alt Pic5](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerDashboard.jpg)
 
@@ -73,33 +73,33 @@ Features In Pictures:
 
 ![alt Pic7](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeScreenCapture.jpg)
 
-* Client shows Remote Server's Drive Details
+* Client shows Remote Workstation's Drive Details
 
 ![alt Pic8](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeDriveDetails.jpg)
 
-* Client exploring and managing Remote Server's File System
+* Client exploring and managing Remote Workstation's File System
 
 ![alt Pic9](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServerFileExplorer.jpg)
 
-* Client LogOff/Shutdown Remote Server 
+* Client LogOff/Shutdown Remote Workstation 
 
 ![alt Pic10](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeShutdownLogOff.jpg)
 
-* Client showing and managing Remote Server Processes
+* Client showing and managing Remote Workstation's Running Application Processes
 
 ![alt Pic11](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeProcessManagement.jpg)
 
-* Client messages, Live Chats with Remote Server Use
+* Client messages, Live Chats with Remote Workstation Logged-In User
 
 ![alt Pic12](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeMessaging.jpg)
 
 ![alt Pic13](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeLiveChat.jpg)
 
-* Client Captures, Remote Server, User Keyboard Activities
+* Client Captures, Remote Workstation, User Keyboard Activities
 
 ![alt Pic14](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCaptureUserTypedKeys.jpg)
 
-* Client opening/closing Remote Server CD Rom Drive
+* Client opening/closing Remote Workstation CD Rom Drive
 
 ![alt Pic15](https://github.com/avarghesein/WinMonitor/blob/master/Docs/Screenshots/WinMonitor-RemoteServeCDDriveManagement.jpg)
 
