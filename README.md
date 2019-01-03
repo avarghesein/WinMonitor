@@ -26,7 +26,8 @@ They are configured to run on boot up and listen for incoming connections (From 
 
 The main program is a Win32 EXE Application named [WinMonitorServer](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorServer/WinMonitorServer)
 The main program depends on a Win32 C++ Library named [WinMonitorCLIB](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorCLIB.1.0) and a Win32 C++ Plugin Library named [WinMonitorServerPlugin](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/Basic_V1.0/WinMonitorServer/WinMonitorServerPlugin) for added features
---A more fine grained plugin model of WinMonitor-Server (though not fully tested) is also available under Version to [here](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/PluginBased_V2.0).
+
+**A more fine grained plugin model of WinMonitor-Server (though not fully tested) is also available under Version to [here](https://github.com/avarghesein/WinMonitor/tree/master/Source/Server/PluginBased_V2.0).
 
 
 The server support Administration Tasks (based on the commands initiated from the WinMonitor Client)
